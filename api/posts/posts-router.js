@@ -20,7 +20,6 @@ router.get("/:id", validatePostId, (req, res) => {
 	// do your magic!
 	// this needs a middleware to verify post id
 	res.status(200).json(req.post);
-	console.log(req);
 });
 
 router.delete("/:id", validatePostId, (req, res) => {

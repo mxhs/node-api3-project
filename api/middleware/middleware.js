@@ -1,12 +1,20 @@
 const Posts = require("../posts/posts-model");
+const PORT = require("../../index");
 
 function logger(req, res, next) {
 	// do your magic!
-	console;
+	const { method, baseUrl, url } = req;
+	console.log("\n  **Logger**    \n");
+	console.log("REQ METHOD: ", method);
+	console.log("REQ URL: ", `http://localhost:${PORT}`, baseUrl, url);
+	console.log("REQ METHOD: ", new Date());
+	console.log("\n    ****    \n");
+	next();
 }
 
 function validateUserId(req, res, next) {
 	// do your magic!
+	console.log("checking userId");
 }
 
 function validateUser(req, res, next) {
@@ -15,7 +23,7 @@ function validateUser(req, res, next) {
 
 async function validatePostId(req, res, next) {
 	// do your magic!
-	console.log("checking post id");
+	console.log("checking postId");
 	try {
 		const post = await Posts.getById(req.params.id);
 		if (post) {
